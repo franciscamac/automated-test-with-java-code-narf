@@ -87,13 +87,24 @@ public class SimpleMathTest {
         Double expected = 3.1D;
         assertEquals(expected, actual, () -> fistNumber + " / " +secondNumber + " did not produce " + expected);
     }
-    @Disabled("Todo: We need stoll work on it")
+//    @Disabled("Todo: We need stoll work on it")
     @Test
     @DisplayName("Division of a number by zero should throw Ar6ithmeticException")
     void testDivision_When_firstNunberIsDividedByZero_ShouldThrowArithmeticException() {
         System.out.println("Division of a number by zero should throw ArithmeticException");
+        //given
         double fistNumber = 6.2D;
         double secondNumber = 0D;
+
+        var expectedMessage = "Division by zero is not allowed.";
+
+        ArithmeticException actual  = assertThrows(ArithmeticException.class, () -> {
+            //when and then
+            simpleMath.division(fistNumber, secondNumber);
+        }, () -> "Expected ArithmeticException was not thrown.");
+
+        assertEquals(expectedMessage, actual.getMessage(), () -> "Exception message did not match expected message.");
+
     }
 
 

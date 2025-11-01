@@ -11,6 +11,9 @@ public class SimpleMath {
         return fistNumber * secondNumber;
     }
     public Double division(Double fistNumber, Double secondNumber) {
+        if (secondNumber.equals(0D)) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
         return fistNumber / secondNumber;
     }
     public Double median(Double[] numbers) {
