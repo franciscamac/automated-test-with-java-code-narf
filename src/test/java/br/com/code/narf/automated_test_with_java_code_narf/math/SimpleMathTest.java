@@ -2,21 +2,44 @@ package br.com.code.narf.automated_test_with_java_code_narf.math;
 
 import br.com.code.narf.automated_test_with_java_code_narf.SimpleMath;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Test Math Operations in SimpleMath Class")
 public class SimpleMathTest {
+
+    SimpleMath simpleMath ;
+    //executado antes de todos os testes
+    @BeforeAll
+    static void setup(){
+        System.out.println("Running @BeforeAll method!");
+    }
+
+    //executado depois de todos os testes
+    @AfterAll
+    static void cleanup(){
+        System.out.println("Running @AfterAll method!");
+    }
+    @BeforeEach
+    void beforeEach(){
+        simpleMath = new SimpleMath();
+        System.out.println("Running @BeforeEach method!");
+    }
+    @AfterEach
+    void afterEach(){
+        System.out.println("Running @AfterEach method!");
+    }
+
     //test[System Under Test]_[Condition]_[Expected Result]
     @Test
     @DisplayName("Sum of 6.2 and 2 should be 8.2")
     void testSum_When_SixDotTwoIsAddedByTwo_ShouldReturnEightDotTwo(){
+
+        System.out.println("Sum of 6.2 and 2 should be 8.2");
         // AAA
         // Arrange, Act, Assert
         //Given / Arrange
-        SimpleMath simpleMath = new SimpleMath();
+
 
         double fistNumber = 6.2D;
         double secondNumber = 2D;
@@ -36,7 +59,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Subtraction of 2 from 6.2 should be 4.2")
     void testSubtraction(){
-        SimpleMath simpleMath = new SimpleMath();
+        System.out.println("Subtraction of 2 from 6.2 should be 4.2");
         double fistNumber = 6.2D;
         double secondNumber = 2D;
         Double actual = simpleMath.subtraction(fistNumber, secondNumber);
@@ -47,7 +70,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Multiplication of 6.2 by 2 should be 12.4")
     void testMultiplication(){
-        SimpleMath simpleMath = new SimpleMath();
+        System.out.println("Multiplication of 6.2 by 2 should be 12.4");
         double fistNumber = 6.2D;
         double secondNumber = 2D;
         Double actual = simpleMath.multiplication(fistNumber, secondNumber);
@@ -57,7 +80,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Division of 6.2 by 2 should be 3.1")
     void testDivision(){
-        SimpleMath simpleMath = new SimpleMath();
+        System.out.println("Division of 6.2 by 2 should be 3.1");
         double fistNumber = 6.2D;
         double secondNumber = 2D;
         Double actual = simpleMath.division(fistNumber, secondNumber);
@@ -68,7 +91,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Division of a number by zero should throw Ar6ithmeticException")
     void testDivision_When_firstNunberIsDividedByZero_ShouldThrowArithmeticException() {
-        SimpleMath simpleMath = new SimpleMath();
+        System.out.println("Division of a number by zero should throw ArithmeticException");
         double fistNumber = 6.2D;
         double secondNumber = 0D;
     }
@@ -77,7 +100,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Median of an array of numbers should return the correct median value")
     void testMedian(){
-        SimpleMath simpleMath = new SimpleMath();
+        System.out.println("Median of an array of numbers should return the correct median value");
         Double[] numbers = {1D, 3D, 2D, 5D, 4D};
         Double actual = simpleMath.median(numbers);
         Double expected = 3D;
