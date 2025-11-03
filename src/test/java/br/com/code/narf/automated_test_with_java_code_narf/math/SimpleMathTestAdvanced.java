@@ -4,6 +4,7 @@ import br.com.code.narf.automated_test_with_java_code_narf.SimpleMath;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -26,15 +27,16 @@ public class SimpleMathTestAdvanced {
         System.out.println("Running @AfterEach method!");
     }
 
-    @DisplayName("Division of 6.2 by 2 should be 3.1")
+    @DisplayName("Teste double subtraction [firstNumber, secondNumber, expected]")
     @ParameterizedTest
     //@MethodSource("testDivisionInputParameters")
     //@MethodSource()
-    @CsvSource({
-            "6.2, 2, 3.1",
-            "71, 14, 5.07",
-            "18.3, 3.1, 5.9"
-    })
+//    @CsvSource({
+//            "6.2, 2, 3.1",
+//            "71, 14, 5.07",
+//            "18.3, 3.1, 5.9"
+//    })
+    @CsvFileSource(resources = "/testeDivision.csv", numLinesToSkip = 1)
     void testDivision(double fistNumber, double secondNumber, double expected){
         System.out.println("Test " + fistNumber + " / " + secondNumber + " = " + expected);
         Double actual = simpleMath.division(fistNumber, secondNumber);
