@@ -3,15 +3,11 @@ package br.com.code.narf.automated_test_with_java_code_narf.math;
 import br.com.code.narf.automated_test_with_java_code_narf.SimpleMath;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SimpleMathTestAdvanced {
 
@@ -25,6 +21,14 @@ public class SimpleMathTestAdvanced {
     @AfterEach
     void afterEach(){
         System.out.println("Running @AfterEach method!");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Narf", "John", "Jane", "Doe"})
+    void testValueSource(String firstName){
+        System.out.println(firstName);
+        assertNotNull(firstName);
+
     }
 
     @DisplayName("Teste double subtraction [firstNumber, secondNumber, expected]")
